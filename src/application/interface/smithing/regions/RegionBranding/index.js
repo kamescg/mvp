@@ -11,11 +11,8 @@ import Link from 'atoms/Link'
 import Image from 'atoms/Image'
 import SVG from 'atoms/SVG'
 
-import UserProfileAvatar from 'containers/user/UserProfileAvatar'
 import DrawerOpen from 'containers/drawer/DrawerOpen'
-import MenuPeoplePopover from 'smithing/menus/MenuPeoplePopover'
-import MenuProjectsPopover from 'smithing/menus/MenuProjectsPopover'
-import MenuOrganizationPopover from 'smithing/menus/MenuOrganizationPopover'
+
 /* ------------------------------- Component -------------------------------- */
 export default props =>
 <Flex>
@@ -43,13 +40,11 @@ export default props =>
     </Flex>
     
     <Flex align="center" w={[1, 1, 0.40]} justify="flex-start" display={['none', 'none', 'Flex']} py={[15]} >
-      <MenuProjectsPopover/>
-      <MenuOrganizationPopover/>
-      <MenuPeoplePopover/>
+
     </Flex>
 
     <Flex align="center"  pr={[null, null, 15]} py={[5, 5, 'inherit']} w={[1, 1, 0.35]}>
-      <UserProfileAvatar py={[10]} />
+
     </Flex>
     <Flex align="center" justify='center' gradient={['blue']} py={[10]} color='white' w={[1, 1, 0.07]} textAlign="center">
       <DrawerOpen><Heading f={[2]} level={[4]}><a>Menu</a></Heading></DrawerOpen>

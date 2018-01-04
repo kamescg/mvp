@@ -6,7 +6,6 @@ import {
  BackgroundImage, BackgroundGradient,
  Button, Heading, Image, Link, Paragraph,
 } from 'atomic'
-import { PersonSearch} from 'entity'
 import {FirestoreList, PopoverPure } from 'containers'
 import DialogOpen from 'containers/dialog/DialogOpen'
 import PopoverClose from 'containers/popover/PopoverClose'
@@ -41,18 +40,7 @@ const Body = props => <Box w={[1,1,675]} bs={4} br={10} >
     <Box w={[1,1,0.7]} bg='white' color='charcoal'p={[10,15]} bs={1}>
         <Box h={[300, 450]}>
             <PerfectScrollbar>
-              <PersonSearch/>
-              <PopoverClose delta='MenuPerson' >
-                <FirestoreList
-                  delta='PersonSearch'
-                  entity='person'
-                  foundry='EntityCard'
-                  styled={{
-                    w: [1],
-                  }}
-                  {...props}
-                />
-              </PopoverClose>
+
             </PerfectScrollbar>
         </Box>
     </Box>

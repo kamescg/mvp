@@ -38,15 +38,7 @@ import GraphDendrogram from 'smithing/graphs/GraphDendrogram'
 export default props => (<div>
 
   <Container w={[1120]} py={[15,25]} >
-    <Heading level={[3]} f={[5,6]} color='blue' ta='center'>
-      Manage Time Like A <em>"Boss"</em> 🚀
-    </Heading>
-  
-    <Paragraph f={[2]} ta='center'>
-      Start by adding a new project, checking on existing deals or inviting new contributors.
-    </Paragraph>
-  
-    <Flex
+   <Flex
       justify='space-evenly'
     >
 
