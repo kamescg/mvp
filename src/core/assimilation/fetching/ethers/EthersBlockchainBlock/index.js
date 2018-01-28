@@ -1,54 +1,86 @@
 /* ------------------------- External Dependencies -------------------------- */
 import React from 'react'
 import { connect } from 'react-redux';
-import { compose, lifecycle, withProps } from 'recompose'
+import { compose, lifecycle, defaultProps } from 'recompose'
 /* ------------------------- Internal Dependencies -------------------------- */
-import EthersBlockchainBlockCard from 'assimilation/display/ethers/EthersBlockchainBlockCard'
+// Store
 import { fromEthers } from 'assimilation/symbiosis/selectors'
 import { ethersBlockchainGetBlockRequest } from 'assimilation/symbiosis/actions'
 import ethers from 'assimilation/symbiosis/ethers/actions'
+
+// Display
+import EthersBlockchainBlockCard from 'assimilation/display/ethers/EthersBlockchainBlockCard'
+import EthersBlockchainBlockTransactions from 'assimilation/display/ethers/EthersBlockchainBlockTransactions'
 /* ---------------------------- Module Package ------------------------------ */
-/*-* Recompose *-*/
-const queryLifecycle = lifecycle(
+/*---* Recompose *---*/
+/*-* Default Props *-*/
+const DefaultProps = defaultProps({
+  chainId: 1,
+  global: true
+})
+
+/*-* Lifecycle *-*/
+const QueryLifecycle = lifecycle(
 {
   componentDidMount()
   {
     if(!this.props.blockNumber) return null 
     this.props.ethersBlockchainBlockRequest({
-      payload: {
-        block: this.props.blockNumber,
-      },
-      metadata: {
-        delta: `BlockchainBlockGet|${this.props.blockNumber}`
-      }
+      blockNumber: this.props.blockNumber,
+      provider: this.props.provider
     })
   },
   componentDidUpdate(prevProps)
   {
     if (this.props.blockNumber != prevProps.blockNumber) {
       if(!this.props.blockNumber) return null 
-      this.props.ethersBlockchainBlockRequest(this.props.blockNumber)
+      this.props.ethersBlockchainBlockRequest({
+        blockNumber: this.props.blockNumber,
+        provider: this.props.provider
+      })
+    }
+    if (this.props.provider != prevProps.provider) {
+      if(!this.props.blockNumber) return null
+      this.props.ethersBlockchainBlockRequest({
+        blockNumber: this.props.blockNumber,
+        provider: this.props.provider
+      })
     }
   }
 })
 
-/*-* Redux *-*/
+
+/*---* Redux *---*/
 const mapStateToProps = (state, props) => ({
-    data: props.blockNumber ? fromEthers.getDeltaData(state, `BlockchainBlockGet|${props.blockNumber}`) : fromEthers.getDeltaData(state, `BlockchainBlockGet|${props.delta}`),
-    blockNumber: props.blockNumber ? props.blockNumber : fromEthers.getDeltaData(state, 'BlockchainBlockNumber')
+    data: props.blockNumber ? fromEthers.getDeltaData(state, `block|${props.blockNumber}`) : fromEthers.getDeltaData(state, `block|${props.delta}`),
+    blockNumber: props.blockNumber ? props.blockNumber : fromEthers.getDeltaData(state, 'BlockchainBlockNumber'),
+    provider: props.provider ? props.provider : fromEthers.getProvider(state)
   }
 )
 
 const mapDispatchToProps = (dispatch, props) => ({
-  ethersBlockchainBlockRequest: (blockNumber)=>dispatch(ethers.blockchainBlock('REQUEST')(
-    blockNumber,
+  ethersBlockchainBlockRequest: (request)=>dispatch(ethers.blockchainBlock('REQUEST')(
+    request.blockNumber,
     {
-      delta: `BlockchainBlockGet|${props.delta}`
-    }
+      delta: `block|${props.blockNumber}`,
+      network: {
+        chainId: props.chainId,
+        global: props.global,
+        provider: request.provider
+      }
+    },  
     )),
 })
 
+const Ethers = props => {
+  return {
+    block: <EthersBlockchainBlockCard {...props} />,
+    tx: <EthersBlockchainBlockTransactions {...props} />,
+  }[props.foundry]
+}
+
 export default compose(
+  DefaultProps,
   connect(mapStateToProps, mapDispatchToProps),
-  queryLifecycle,
-)(EthersBlockchainBlockCard);
+  QueryLifecycle,
+)(Ethers);

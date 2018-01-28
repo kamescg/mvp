@@ -7,8 +7,19 @@ import { Route } from 'atomic'
 
 import Home from 'smithing/pages/dashboard/Home'
 import Predictions from 'smithing/pages/dashboard/Predictions'
-import Todo from 'smithing/pages/dashboard/Todo'
-import Contributors from 'smithing/pages/dashboard/Contributors'
+import Ethers from 'smithing/pages/dashboard/Ethers'
+// Blocks
+import EthereumBlocks from 'smithing/pages/dashboard/EthereumBlocks'
+import EthereumBlocksHistory from 'smithing/pages/dashboard/EthereumBlocksHistory'
+import EthereumBlocksGas from 'smithing/pages/dashboard/EthereumBlocksGas'
+import EthereumContracts from 'smithing/pages/dashboard/EthereumContracts'
+
+// Wallet
+import EthereumWallet from 'smithing/pages/dashboard/EthereumWallet'
+
+// Ethereum Name System
+import EnsTools from 'smithing/pages/dashboard/EnsTools'
+import EnsScan from 'smithing/pages/dashboard/EnsScan'
 
 /* ------------------------------- Component -------------------------------- */
 
@@ -18,14 +29,44 @@ const DashboardMainRoutes = props => (
   <Route
     exact
     path='/dashboard'
-    component={Home}
+    component={Ethers}
   />
-
-  {/*---*--- Predictions ---*---*/}
+  {/*---*--- Ethereum Name System ---*---*/}
   <Route
     exact
-    path='/dashboard/gains'
-    component={Predictions}
+    path='/dashboard/ens'
+    component={EnsTools}
+  />
+  <Route
+    exact
+    path='/dashboard/ens/scan'
+    component={EnsScan}
+  />
+  
+
+  {/*---*--- Ethereum Blocks ---*---*/}
+  <Route
+    path='/dashboard/blocks'
+    component={EthereumBlocks}
+  />
+  <Route
+    path='/dashboard/blocks/history'
+    component={EthereumBlocksHistory}
+  />
+  <Route
+    path='/dashboard/blocks/gas'
+    component={EthereumBlocksGas}
+  />
+
+  {/*---*--- Wallet ---*---*/}
+  <Route
+    path='/dashboard/wallet'
+    component={EthereumWallet}
+  />
+  {/*---*--- Wallet ---*---*/}
+  <Route
+    path='/dashboard/smart-contract'
+    component={EthereumContracts}
   />
   {/*---*--- Predictions ---*---*/}
   <Route

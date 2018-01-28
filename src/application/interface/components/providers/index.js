@@ -16,7 +16,7 @@ import { ScrollToTop } from 'fusion'
 injectTapEventPlugin();
 export default ({ store, history, children }) =>
 <Provider store={store}>
-  <Voice>
+  <Voice store={store} >
     <ConnectedRouter history={history}>
         <ThemeProvider theme={themeSettings}>
           <MuiThemeProvider>

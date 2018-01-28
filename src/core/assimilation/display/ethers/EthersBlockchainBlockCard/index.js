@@ -11,7 +11,7 @@ import Paragraph from 'atoms/Paragraph'
 import List from 'atoms/List'
 /* ---------------------------- Module Package ------------------------------ */
 export default props => !props.data ? null :
-<Box bs={0} br={10} p={[15,25]} >
+<Box bs={0} br={10} p={[15,25]} {...props.styled}  >
   <Heading level={[3]} f={[3]} color='blue' >
     Hash:  {idx(props, _=>_.data.hash)}
   </Heading>
@@ -44,16 +44,4 @@ export default props => !props.data ? null :
       <strong>Gas Used:</strong> {idx(props, _=>_.data.gasUsed)}
     </Paragraph>
   </Box>
-  
-  {
-    !idx(props, _=>_.data.transactions) ? null :
-    <Box h={[250, 400]} bs={0} br={10} p={[15,30]} >
-      <Heading level={[2]} f={[3]} mb={10}>
-        Transaction List
-      </Heading>
-      <PerfectScrollbar>
-        <List children={props.data.transactions}/>
-      </PerfectScrollbar>
-    </Box>
-  }
 </Box>

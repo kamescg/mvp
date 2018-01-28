@@ -113,6 +113,7 @@ module.exports = {
       assimilation: path.resolve(__dirname, '../src/core/assimilation'),
       components: path.resolve(__dirname, '../src/core/components'),
       containers: path.resolve(__dirname, '../src/core/containers'),
+      contracts: path.resolve(__dirname, '../src/core/contracts'),
       entity: path.resolve(__dirname, '../src/core/entity'),
       factory: path.resolve(__dirname, '../src/core/factory'),
       foundry: path.resolve(__dirname, '../src/core/foundry'),

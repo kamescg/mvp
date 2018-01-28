@@ -11,14 +11,9 @@ import Button from 'atoms/Button'
 import Heading from 'atoms/Heading'
 import Paragraph from 'atoms/Paragraph'
 import List from 'atoms/List'
-// privateKey(pin): "0x46c288501ecb91af5639bf2489249f39fa8e5e1ecddbb79aae24b3b4a0fafe75"
-// defaultGasLimit(pin): 1500000
-// address(pin): "0x6a5aDAba5165FB18D928d2a3cc23c013D9ffc800"
-// mnemonic(pin): "behind text thought zebra avocado maple ice provide scheme jaguar label spoon"
-// path(pin): "m/44'/60'/0'/0/0"
 /* ---------------------------- Module Package ------------------------------ */
 export default props => !props.data ? null :
-<Box bs={0} br={10} p={[15,25]} >
+<Box>
   <Flex align='center' >
     <Box w={[1,1,0.7]} >
       <Heading level={[3]} f={[4,5]} color='blue' >
@@ -26,8 +21,8 @@ export default props => !props.data ? null :
       </Heading>
     </Box>
     <Box w={[1,1,0.3]} >
-      <Button gradient='cherry'  onClick={()=>props.ethersWalletCreateRandomRequest()}>
-        Randomly Generate New Wallet
+      <Button gradient='cherry' onClick={()=>props.ethersWalletCreateRandomRequest()}>
+        Randomly Generate Wallet
       </Button>
     </Box>
   </Flex>

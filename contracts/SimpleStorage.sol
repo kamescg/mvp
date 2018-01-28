@@ -1,5 +1,7 @@
 pragma solidity ^0.4.17;
 
+// import "multisig-wallet/MultiSigWallet.sol";
+
 contract SimpleStorage {
   uint storedData;
 

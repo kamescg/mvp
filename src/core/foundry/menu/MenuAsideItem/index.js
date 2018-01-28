@@ -18,7 +18,7 @@ if (props.childrenItems) SubMenuItems = <Box bg='white' >{lodashMap(props.childr
 return <Flex {...props} key={props.to} {...props.wrapper} >
   <Box flex={['1 1 0']} px={[10]} textAlign="center" {...props.iconWrap} >
     <DrawerLink to={props.to}>
-      {!props.svg ? null : <SVG svg={props.svg} {...props.icon} svgColor='white' w={[30]} height={[30]} /> }
+      {!props.svg ? null : <SVG svg={props.svg} {...props.icon} svgColor='white' w={[props.dimensions || 30]} height={[props.dimensions || 30]} /> }
     </DrawerLink>
     </Box>
   <Box flex={['4 1 0']} pl={[10]} py={[10,15]} {...props.titleWrap}>

@@ -16,17 +16,15 @@ import EthersContractMethods from '../EthersContractMethods'
  `
 /* ---------------------------- Module Package ------------------------------ */
 export default props => !props.data ? null :
-<Box bs={2} br={10} p={[15,25]} {...props.styled} >
-  <Heading level={[3]} f={[3]} color='blue' ta='center' >
-    Ethereum Name System ABI
+<Box boxShadow={2} p={15} {...props.styled} >
+  <Heading f={[4]} color='blue' >
+    {props.ethName || props.delta } ABI
   </Heading>
-  <Paragraph fw='300' ta='center'><strong>network:</strong> {idx(props, _=>_.data.provider.name)}</Paragraph>
-  <Paragraph fw='300' ta='center' > {idx(props, _=>_.data.address)}</Paragraph>
+  <Paragraph fw='300'><strong>network:</strong> {idx(props, _=>_.data.provider.name)}</Paragraph>
+  <Paragraph fw='300'> {idx(props, _=>_.data.address)}</Paragraph>
   <HorizontalRule bi='colorWheel' />
   {props.transactions}
-  <Scroll h={260} direction='column' >
-    {
-      props.data.interface.abi.map(ethInterface => <EthersContractMethods {...ethInterface} /> )
-    }
-  </Scroll>
+  {
+    props.data.interface.abi.map(ethInterface => <EthersContractMethods {...ethInterface} /> )
+  }
 </Box>

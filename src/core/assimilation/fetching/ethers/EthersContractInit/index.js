@@ -14,7 +14,6 @@ const QueryLifecycle = lifecycle(
   {
     if(!this.props.ethAbi) return null 
     this.props.contractCreate(this.props.ethAbi)
-    this.props.blockchainBlockNumber()
   },
   componentDidUpdate(prevProps)
   {
@@ -31,12 +30,6 @@ const mapStateToProps = (state, props) => ({
 )
 
 const mapDispatchToProps = (dispatch, props) => ({
-  blockchainBlockNumber: ()=>dispatch(ethers.blockchainBlockNumber('REQUEST')(
-    null,
-    {
-      delta: 'blockLatest'
-    }
-  )),
   contractCreate: (ensName)=>dispatch(ethers.contractCreate('REQUEST')(
     {
       ethAddress: props.ethAddress,

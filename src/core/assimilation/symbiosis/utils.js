@@ -12,11 +12,12 @@ export function createRequestTypes (base) {
   return res
 }
 
-export function action (type, payload = {}, metadata={}, batch) {
+export function action (type, payload = {}, metadata={}, batch, entity) {
   return {
     type, 
     payload,
     metadata,
     batch,
+    entity,
   }
 }

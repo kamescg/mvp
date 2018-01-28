@@ -22,24 +22,24 @@ const MethodOutput = props =>
 </Box>
 
 export default props => !props.name ? null :
-<Box bs={0} br={10} p={[15,25]} mb={15} >
+<Box mb={15} >
   <Heading level={[3]} f={[3]} color='blue' >
     {idx(props, _=>_.name)}
   </Heading>
   <HorizontalRule bi='turqoise' />
   <Paragraph>
-    Constant: {`${props.constant}`}
+    <strong>Constant:</strong> {`${props.constant}`}
   </Paragraph>
   <Paragraph>
-    Type: {props.type}
+    <strong>Type:</strong> {props.type}
   </Paragraph>
   <Paragraph>
-    Payable:{`${props.payable}`}
+    <strong>Payable:</strong>{`${props.payable}`}
   </Paragraph>
   {
     !(idx(props, _=>_.inputs) && props.inputs.length > 0 ) ? null :
     <div>
-      <Heading level={[3]} f={[3]}>
+      <Heading f={[4]}>
         Inputs
       </Heading>
       <Flex direction="column" >

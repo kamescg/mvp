@@ -78,6 +78,7 @@ function* getCredentials({payload, metadata}) {
       message: `Welcome ${credentials.name} to Eidenai`
     }}))
   } catch(e) {
+    console.log(e)
     yield put(uPortGetCredentialsFailure({payload: e, metadata}))
     yield put(notificationOpen({payload:{
       title: 'Failure: Identity Request ',
@@ -110,14 +111,14 @@ function* getAttestCredentials({payload, metadata}) {
   try {
     
     const { credentials, uriHandler } = payload
-    const address = yield uPortConnection.attestCredentials(credentials, uriHandler)
-
+    const address = yield uPortConnection.attestCredentials(payload, uriHandler)
     yield put(uPortGetAttestCredentialsSuccess({
-      payload: credentials.claim, 
+      payload: payload.claim, 
       metadata
     }))
     yield put(notificationOpen({payload:{title: 'Confirmed: Application received Attest Request '}}))
   } catch(e) {
+    console.log(e)
     yield put(uPortGetAttestCredentialsFailure({payload: e, metadata}))
     yield put(notificationOpen({payload:{
       title: 'Failure: Attest Request ',
@@ -139,6 +140,7 @@ function* initContract({payload, metadata}) {
       metadata
     }))
   } catch(e) {
+    e
     yield put(uPortInitContractFailure({payload: e, metadata}))
   }
 }

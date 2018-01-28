@@ -38,6 +38,9 @@ import {
 
 import { history } from 'appStore/configuration';
 
+import { uPortGetCredentialsRequest } from 'assimilation/symbiosis/actions'
+import { uPortGetAttestCredentialsRequest } from 'assimilation/symbiosis/actions'
+import ethers from 'assimilation/symbiosis/ethers/actions'
 /* ---------------------------- Module Package ------------------------------ */
 const queryLifecycle = lifecycle(
 {
@@ -46,11 +49,136 @@ const queryLifecycle = lifecycle(
     const self = this 
     annyang.addCommands({
 
-        /*---*--- Routing ---*---*/
+        /*---*--- Network ---*---*/
+        'network *command': eventVoice=>{ 
+            switch (eventVoice.toLowerCase()) {
+              case('test'):
+                this.props.store.dispatch(ethers.providerChange({
+                  payload: 'json'
+                }))
+                break;
+              case('live'):
+                this.props.store.dispatch(ethers.providerChange({
+                  payload: 'default'
+                }))
+              case('infura'):
+              console.log(eventVoice)
+                this.props.store.dispatch(ethers.providerChange({
+                  payload: 'default'
+                }))
+                break;
+            }
+        },
+        /*---*--- Wallet ---*---*/
+        'wallet *command': eventVoice=>{ 
+            switch (eventVoice.toLowerCase()) {
+              case('random'):
+                this.props.store.dispatch(ethers.walletGenerateRandom('REQUEST')(
+                  null,
+                  {
+                    delta: `wallet|random`
+                  },
+                ))
+                break;
+            }
+        },
+        /*---*--- Blocks ---*---*/
+        'block *command': eventVoice=>{ 
+            switch (eventVoice.toLowerCase()) {
+              case('100'):
+                this.props.store.dispatch(ethers.blockchainBlock('REQUEST')(
+                  Number(450000),
+                  {
+                    delta: `block|scan|450000`,
+                    network: {
+                      provider: 'default'
+                    }
+                  }
+                ))
+                break;
+                default:
+                this.props.store.dispatch(ethers.blockchainBlock('REQUEST')(
+                  Number(eventVoice.split(",").join("")),
+                  {
+                    delta: `block|scan|${eventVoice.split(",").join("")}`,
+                    network: {
+                      provider: 'default'
+                    }
+                  }
+                ))
+                console.log(eventVoice.split(",").join("") )
+            }
+        },
+        'blocks latest *command': eventVoice=>{ 
+            switch (eventVoice.toLowerCase()) {
+                default:
+                history.push('/dashboard/blocks')
+                const blockEnd = 4154321 - Number(eventVoice.toLowerCase())
+                for (var index = 4154321; index != blockEnd; index--) {
+                  this.props.store.dispatch(ethers.blockchainBlock('REQUEST')(
+                    Number(index),
+                    {
+                      delta: `block|scan|${index}`,
+                      network: {
+                        provider: 'default'
+                      }
+                    }
+                  ))
+                }
+            }
+        },
+        /*---*--- Login ---*---*/
+        'login *command': eventVoice=>{ 
+            switch (eventVoice.toLowerCase()) {
+              case('blockchain'):
+                history.push('/dashboard/login')
+                this.props.store.dispatch(uPortGetCredentialsRequest({
+                  payload: {
+                    requested: ['name', 'firebase', 'email', 'phone', 'avatar'],
+                    notifications: true
+                  },
+                  metadata: {
+                    delta: 'credentials'
+                  }
+                }))
+                break;
+            }
+        },
+        /*---*--- Identity ---*---*/
+        'identity *command': eventVoice=>{ 
+            switch (eventVoice.toLowerCase()) {
+              case('blockchain'):
+                this.props.store.dispatch(uPortGetCredentialsRequest({
+                  payload: {
+                    requested: ['name', 'email', 'phone', 'avatar'],
+                    notifications: true
+                  },
+                  metadata: {
+                    delta: 'credentials'
+                  }
+                }))
+                break;
+              case('proclaim'):
+                this.props.store.dispatch(uPortGetAttestCredentialsRequest({
+                  payload: {
+                    sub: 'Ox' + '2omEwA8DWf3876sYn5KzfCz2J2rUVy5PuoR',
+                    claim: {'eidenai': 'active'}
+                  },
+                  metadata: {
+                    delta: 'attestCredentials'
+                  }
+                }))
+                break;
+                default:
+
+                console.log(eventVoice)
+            }
+        },
+        /*---*--- New ---*---*/
         'new *command': eventVoice=>{ 
             switch (eventVoice.toLowerCase()) {
               case('deal' || 'deals'):
-                history.push('/dashboard/deal/create')
+                history.push('/dashboard/wallet/new')
                 break;
             }
         },
@@ -60,26 +188,11 @@ const queryLifecycle = lifecycle(
               case('home'):
                 history.push('/dashboard')
                 break;
-              case('deals'):
-                history.push('/dashboard/deals')
+              case('blocks'):
+                history.push('/dashboard/blocks')
                 break;
-              case('health'):
-                history.push('/dashboard/health')
-                break;
-              case('predictions'):
-                history.push('/dashboard/predictions')
-                break;
-              case('messages'):
-                history.push('/dashboard/messages')
-                break;
-              case('people'):
-                history.push('/dashboard/people')
-                break;
-              case('schedule'):
-                history.push('/dashboard/settings')
-                break;
-              case('settings'):
-                history.push('/dashboard/settings')
+              case('wallet'):
+                history.push('/dashboard/wallet')
                 break;
             }
         },
