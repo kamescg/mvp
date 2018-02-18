@@ -1,8 +1,8 @@
 {
-  "app.css": "static/css/app.12ba5787.css",
-  "app.css.map": "static/css/app.12ba5787.css.map",
-  "app.js": "static/js/app.d10bb08f.js",
-  "app.js.map": "static/js/app.d10bb08f.js.map",
+  "app.css": "static/css/app.92f82cde.css",
+  "app.css.map": "static/css/app.92f82cde.css.map",
+  "app.js": "static/js/app.ba65f5b5.js",
+  "app.js.map": "static/js/app.ba65f5b5.js.map",
   "assets.js": "static/js/assets.41bf325b.js",
   "assets.js.map": "static/js/assets.41bf325b.js.map",
   "d3.js": "static/js/d3.04f69a01.js",
@@ -25,6 +25,6 @@
   "static/media/roboto-v15-latin-regular.woff2": "static/media/roboto-v15-latin-regular.7e367be0.woff2",
   "static/media/story.jpg": "static/media/story.55ce2a05.jpg",
   "static/media/teaching.jpg": "static/media/teaching.8caf56ae.jpg",
-  "vendor.js": "static/js/vendor.3c36e5c2.js",
-  "vendor.js.map": "static/js/vendor.3c36e5c2.js.map"
+  "vendor.js": "static/js/vendor.c76c3618.js",
+  "vendor.js.map": "static/js/vendor.c76c3618.js.map"
 }
