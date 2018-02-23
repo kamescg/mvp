@@ -203,7 +203,10 @@ export function * walletEncrypt ({payload, metadata}) {
 
 export function * blockchainBlockNumber ({payload, metadata}) {
   try {
-    const provider = providerRouting(true)
+    const { network } = metadata
+    const provider = providers.getDefaultProvider()
+    console.log(provider)
+    console.log(providers.getDefaultProvider())
     const latestBlockNumber =  yield provider.getBlockNumber()
     yield put(actions.blockchainBlockNumber("SUCCESS")(
       latestBlockNumber,
@@ -222,7 +225,8 @@ export function * blockchainBlockNumber ({payload, metadata}) {
  
 export function * blockchainGasPrice ({payload, metadata}) {
   try {
-    const provider = providerRouting(true)
+    const { network } = metadata
+    const provider = networkRouting(network)
     const gasPrice = yield provider.getGasPrice()
     yield put(actions.blockchainGasPrice("SUCCESS")(
       gasPrice.toString(),
@@ -242,7 +246,7 @@ export function * blockchainBlock ({payload, metadata}) {
   try {
     const { network } = metadata
     const blockNumber = payload
-    const provider = networkRouting(network)
+    const provider = providers.getDefaultProvider()
     const blockInfo = yield provider.getBlock(blockNumber)
     yield put(actions.blockchainBlock("SUCCESS")(
       EthersBlockFlowIn(blockInfo),

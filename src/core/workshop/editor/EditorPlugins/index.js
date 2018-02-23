@@ -8,22 +8,22 @@ import html5video from 'ory-editor-plugins-html5-video'
 import divider from 'ory-editor-plugins-divider'
 import native from 'ory-editor-plugins-default-native'
 // Editor Plugins
-import EditorPluginEthereumBlock from 'foundry/plugins/EditorPluginEthereumBlock'
-import EditorPluginSection from 'foundry/plugins/EditorPluginSection'
-import EditorPluginContainer from 'foundry/plugins/EditorPluginContainer'
-import EditorPluginFlex from 'foundry/plugins/EditorPluginFlex'
+import EditorPluginEthereumBlock from 'workshop/plugins/EditorPluginEthereumBlock'
+import EditorPluginSection from 'workshop/plugins/EditorPluginSection'
+import EditorPluginContainer from 'workshop/plugins/EditorPluginContainer'
+import EditorPluginFlex from 'workshop/plugins/EditorPluginFlex'
 
 // Dether
-import EditorPluginDetherAddSellPoint from 'foundry/plugins/EditorPluginDetherAddSellPoint'
-import EditorPluginDetherDeleteSellPoint from 'foundry/plugins/EditorPluginDetherDeleteSellPoint'
-import EditorPluginDetherGetAllTellers from 'foundry/plugins/EditorPluginDetherGetAllTellers'
-import EditorPluginDetherGetTeller from 'foundry/plugins/EditorPluginDetherGetTeller'
-import EditorPluginDetherGetTellerBalance from 'foundry/plugins/EditorPluginDetherGetTellerBalance'
-import EditorPluginDetherGetTellersInZone from 'foundry/plugins/EditorPluginDetherGetTellersInZone'
-import EditorPluginDetherSendToBuyer from 'foundry/plugins/EditorPluginDetherSendToBuyer'
+import EditorPluginDetherAddSellPoint from 'workshop/plugins/EditorPluginDetherAddSellPoint'
+import EditorPluginDetherDeleteSellPoint from 'workshop/plugins/EditorPluginDetherDeleteSellPoint'
+import EditorPluginDetherGetAllTellers from 'workshop/plugins/EditorPluginDetherGetAllTellers'
+import EditorPluginDetherGetTeller from 'workshop/plugins/EditorPluginDetherGetTeller'
+import EditorPluginDetherGetTellerBalance from 'workshop/plugins/EditorPluginDetherGetTellerBalance'
+import EditorPluginDetherGetTellersInZone from 'workshop/plugins/EditorPluginDetherGetTellersInZone'
+import EditorPluginDetherSendToBuyer from 'workshop/plugins/EditorPluginDetherSendToBuyer'
 
 // uPort
-import EditorPluginIdentityLogin from 'foundry/plugins/EditorPluginIdentityLogin'
+import EditorPluginIdentityLogin from 'workshop/plugins/EditorPluginIdentityLogin'
 /* ------------------------ Initialize Dependencies ------------------------- */
 export default {
   content: [

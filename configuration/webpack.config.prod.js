@@ -100,13 +100,22 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      appStore: path.resolve(__dirname, '../src/application/interface/store'),
+     appStore: path.resolve(__dirname, '../src/application/interface/store'),
       appTheme: path.resolve(__dirname, '../src/application/interface/theme'),
-      workshop: path.resolve(__dirname, '../src/application/interface/workshop'),
+      appContainer: path.resolve(__dirname, '../src/application/interface/containers'),
+      theme: path.resolve(__dirname, '../src/application/interface/theme'),
 
       /*--- Level 1 ---*/
       settings: path.resolve(__dirname, '../src/application/settings'),
       static: path.resolve(__dirname, '../src/application/static'),
+      layout: path.resolve(__dirname, '../src/application/interface/layout'),
+      routes: path.resolve(__dirname, '../src/application/interface/store/routes'),
+      smithing: path.resolve(__dirname, '../src/application/interface/smithing'),
+
+      /*--- Store ---*/
+      store: path.resolve(__dirname, '../src/application/interface/store'),
+
+      workshop: path.resolve(__dirname, '../src/core/workshop'),
 
       /*--- Interface ---*/
       assembly: path.resolve(__dirname, '../src/core/assembly'),
@@ -114,13 +123,13 @@ module.exports = {
       assimilation: path.resolve(__dirname, '../src/core/assimilation'),
       components: path.resolve(__dirname, '../src/core/components'),
       containers: path.resolve(__dirname, '../src/core/containers'),
+      contracts: path.resolve(__dirname, '../src/core/contracts'),
       entity: path.resolve(__dirname, '../src/core/entity'),
       factory: path.resolve(__dirname, '../src/core/factory'),
       foundry: path.resolve(__dirname, '../src/core/foundry'),
       forms: path.resolve(__dirname, '../src/core/forms'),
       logic: path.resolve(__dirname, '../src/core/logic'),
       services: path.resolve(__dirname, '../src/core/logic/services'),
-      smithing: path.resolve(__dirname, '../src/core/smithing'),
       wrappers: path.resolve(__dirname, '../src/core/wrappers'),
 
       /*--- Components ---*/
@@ -135,19 +144,7 @@ module.exports = {
       organisms: path.resolve(__dirname, '../src/core/components/atomic/organisms'),
       fusion: path.resolve(__dirname, '../src/core/components/fusion'),
       templates: path.resolve(__dirname, '../src/core/components/templates'),
-
-      /*--- Workshop ---*/
-      pages: path.resolve(__dirname, '../src/core/workshop/pages'),
     
-      /*--- Store ---*/
-      store: path.resolve(__dirname, '../src/core/store'),
-      apollo: path.resolve(__dirname, '../src/core/store/apollo'),
-      apolloQuery: path.resolve(__dirname, '../src/core/store/apollo/query'),
-
-      /*--- Theme ---*/
-      theme: path.resolve(__dirname, '../src/core/theme'),
-      layout: path.resolve(__dirname, '../src/core/theme/layout'),
-
       'react-native': 'react-native-web',
       'mapbox-gl$': path.resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js')
     },
@@ -310,23 +307,7 @@ module.exports = {
 
 
     new webpack.DefinePlugin(env.stringified),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        // Disabled because of an issue with Uglify breaking seemingly valid code:
-        // https://github.com/facebookincubator/create-react-app/issues/2376
-        // Pending further investigation:
-        // https://github.com/mishoo/UglifyJS2/issues/2011
-        comparisons: false,
-      },
-      output: {
-        comments: false,
-        // Turned on because emoji and regex is not minified properly using default
-        // https://github.com/facebookincubator/create-react-app/issues/2488
-        ascii_only: true,
-      },
-      sourceMap: false,
-    }),
+
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
       filename: cssFilename,

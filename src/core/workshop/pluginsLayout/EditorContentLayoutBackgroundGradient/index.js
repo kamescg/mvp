@@ -57,8 +57,8 @@ export default (props) =>
   hintText="0-1"
   floatingLabelText="Gradient Opacity"
   inputStyle={{ color: '#3e3e3e' }}
-  floatingLabelStyle={{ color: '#3e3e3e' }}
-  hintStyle={{ color: 'grey' }}
+  floatingLabelStyle={{ color: '#FFF' }}
+  hintStyle={{ color: '#FFF' }}
   value={props.state.backgroundGradientOpacity}
   onChange={handleChange(props.onChange, 'backgroundGradientOpacity')}
 />

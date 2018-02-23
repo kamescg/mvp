@@ -103,7 +103,7 @@ module.exports = {
       smithing: path.resolve(__dirname, '../src/application/interface/smithing'),
 
       /*--- Store ---*/
-      store: path.resolve(__dirname, '../src/core/store'),
+      store: path.resolve(__dirname, '../src/application/interface/store'),
 
       workshop: path.resolve(__dirname, '../src/core/workshop'),
 

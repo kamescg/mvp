@@ -1,0 +1,15 @@
+export default [
+  { value: 'blue', text: 'Blue' },
+  { value: 'blueAqua', text: 'Blue Aqua' },
+  { value: 'blueSky', text: 'Blue Sky' },
+  { value: 'blueAlge', text: 'Blue Alge' },
+  { value: 'cherry', text: 'Cherry' },
+  { value: 'green', text: 'Green' },
+  { value: 'greenDeep', text: 'Green Deep' },
+  { value: 'greenLeaf', text: 'Green Leaf' },
+  { value: 'greenLime', text: 'Green Lime' },
+  { value: 'purple', text: 'Purple' },
+  { value: 'purpleDeep', text: 'Purple Deep' },
+  { value: 'purpleFade', text: 'Purple Fade' },
+  { value: 'orange', text: 'Orange' },
+]

@@ -23,7 +23,6 @@ import { fromEthers } from 'assimilation/symbiosis/selectors'
 import ethers from 'assimilation/symbiosis/ethers/actions'
 import { ethersWalletCreateFromMenemonicRequest } from 'assimilation/symbiosis/actions'
 /* ------------------------ Initialize Dependencies ------------------------- */
-import FormRender from 'forms/ethers/EthersWalletGenerateBrainCard'
 import FormRender from './render'
 
 /* --------------------------- Component Entry ------------------------------ */

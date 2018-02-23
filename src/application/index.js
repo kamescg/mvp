@@ -7,9 +7,9 @@ import annyang from 'annyang'
 import Root from './interface';
 import { configureStore, history } from 'appStore/configuration';
 import registerServiceWorker from './registerServiceWorker';
-
 /* ------------------------ Initialize Dependencies ------------------------- */
 const store = configureStore();
+window.store = configureStore();
 
 /* ---------------------------- Module Package ------------------------------ */
 const rootElement = document.getElementById('root')

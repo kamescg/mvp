@@ -12,6 +12,7 @@ import DrawerFactory from 'containers/drawer/DrawerFactory'
 import AsideDrawerMenu from 'workshop/layout/AsideDrawerMenu'
 
 import SiteEntry from 'layout/entry/Site'
+import EditorEntry from 'layout/entry/editor'
 import DashboardEntry from 'layout/entry/Dashboard'
 
 import {
@@ -22,7 +23,7 @@ import {
 const EthereumConnection = props => ({
   ganache: <EthersGanacheConnect/>,
   infura: <EthersInfuraConnect/>
-}['ganache'])
+}['infura'])
 
 
 const ToastSetting = {
@@ -38,8 +39,6 @@ const ToastSetting = {
 export default () => (
 <div>
   <EthereumConnection/>
-  <EthersGanacheConnect/>
-  <EthersInfuraConnect/>
   <Block z={[500]} >
     <DialogFactory/>
     <DrawerFactory>
@@ -49,6 +48,7 @@ export default () => (
   </Block>
   <Block z={[300]} o={0.999999} >
     <Switch>
+      <Route path="/editor" component={EditorEntry} />
       <Route path="/dashboard" component={DashboardEntry} />
       <Route path="/" component={SiteEntry} />
     </Switch>

@@ -16,7 +16,7 @@ export default ({ handleSubmit, isSubmitting, styled, ...props}) => (
 <Form {...styled}>
   <Flex align='center' >
     <Box w={[1,1,0.7]} >
-      <Heading level={[3]} f={[4,5]} color='blue' >
+      <Heading level={[3]} f={[4,5]}>
         Restore Wallet from Seed Phrase
       </Heading>
     </Box>

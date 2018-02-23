@@ -27,8 +27,8 @@ export default (props) =>
   hintText="http://example.com/image.png"
   floatingLabelText="Image (URL)"
   inputStyle={{ color: '#3e3e3e' }}
-  floatingLabelStyle={{ color: '#3e3e3e' }}
-  hintStyle={{ color: 'grey' }}
+  floatingLabelStyle={{ color: '#FFF' }}
+  hintStyle={{ color: '#FFF' }}
   value={props.state.backgroundImage}
   onChange={handleChange(props.onChange, 'backgroundImage')}
 />
@@ -36,8 +36,8 @@ export default (props) =>
   hintText="0-1"
   floatingLabelText="Image Opacity"
   inputStyle={{ color: '#3e3e3e' }}
-  floatingLabelStyle={{ color: '#3e3e3e' }}
-  hintStyle={{ color: 'grey' }}
+  floatingLabelStyle={{ color: '#FFF' }}
+  hintStyle={{ color: '#FFF' }}
   value={props.state.backgroundImageOpacity}
   onChange={handleChange(props.onChange, 'backgroundImageOpacity')}
 />

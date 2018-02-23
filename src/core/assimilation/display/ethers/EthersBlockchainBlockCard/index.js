@@ -12,7 +12,7 @@ import List from 'atoms/List'
 /* ---------------------------- Module Package ------------------------------ */
 export default props => !props.data ? null :
 <Box bs={0} br={10} p={[15,25]} {...props.styled}  >
-  <Heading level={[3]} f={[3]} color='blue' >
+  <Heading level={[3]} f={[3]} >
     Hash:  {idx(props, _=>_.data.hash)}
   </Heading>
   <HorizontalRule bi='colorWheel' bs={1} w={[1]} />

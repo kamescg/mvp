@@ -66,24 +66,16 @@ function* getProvider({payload, metadata}) {
 /*---*--- Get Credentials ---*---*/
 function* getCredentials({payload, metadata}) {
   try {
-    yield put(notificationOpen({payload:{title: 'Requesting: Identity'}}))
     const requestedCredentials = payload
     const credentials = yield uPortConnection.requestCredentials(requestedCredentials)
     yield put(uPortGetCredentialsSuccess({
       payload: credentials, 
       metadata
     }))
-    yield put(notificationOpen({payload:{
-      title: 'Returned: Identity Request',
-      message: `Welcome ${credentials.name} to Eidenai`
-    }}))
+
   } catch(e) {
     console.log(e)
     yield put(uPortGetCredentialsFailure({payload: e, metadata}))
-    yield put(notificationOpen({payload:{
-      title: 'Failure: Identity Request ',
-      message: e,
-    }}))
   }
 }
 
@@ -91,17 +83,14 @@ function* getCredentials({payload, metadata}) {
 /*---*--- Get Address ---*---*/
 function* getAddress({payload, metadata}) {
   try {
-    yield put(notificationOpen({payload:{title: 'Requesting: Address '}}))
     const { uriHandler } = payload
     const address = yield uPortConnection.requestAddress(uriHandler)
     yield put(uPortGetAddressSuccess({
       payload: address, 
       metadata
     }))
-    yield put(notificationOpen({payload:{title: 'Returned: Addess Request '}}))
   } catch(e) {
     yield put(uPortGetAddressFailure({payload: e, metadata}))
-    yield put(notificationOpen({payload:{title: 'Failure: Addess Request '}}))
   }
 }
 
@@ -116,14 +105,9 @@ function* getAttestCredentials({payload, metadata}) {
       payload: payload.claim, 
       metadata
     }))
-    yield put(notificationOpen({payload:{title: 'Confirmed: Application received Attest Request '}}))
   } catch(e) {
     console.log(e)
     yield put(uPortGetAttestCredentialsFailure({payload: e, metadata}))
-    yield put(notificationOpen({payload:{
-      title: 'Failure: Attest Request ',
-      message: e,
-    }}))
   }
 }
 

@@ -1,10 +1,12 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
 import actions from './actions'
 
+import ipfsAPI from 'ipfs-api'
+const ipfs = ipfsAPI('localhost', '5002')
 
 export function * filesAdd ({payload, metadata}) {
   try {
-
+    const file = yield ipfs.add(payload)
     yield put(actions.filesAdd("SUCCESS")(
       payload,
       metadata,
@@ -19,6 +21,7 @@ export function * filesAdd ({payload, metadata}) {
   }
 }
 
+filesAdd({payload: {}, metadata:{}})
  
 export function * filesGet ({payload, metadata}) {
   try {

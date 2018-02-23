@@ -16,7 +16,7 @@ export default props => !props.data ? null :
 <Box bs={0} br={10} p={[15,25]} >
   <Flex>
     <Box w={[1,1,0.7]} >
-      <Heading level={[3]} f={[3]} color='blue' >
+      <Heading level={[3]} f={[3]} >
         <strong>Private Key:</strong> {idx(props, _=>_.data.privateKey)}
       </Heading>
     </Box>

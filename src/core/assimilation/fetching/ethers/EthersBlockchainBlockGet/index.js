@@ -13,15 +13,8 @@ const queryLifecycle = lifecycle(
 {
   componentDidMount()
   {
-    if(!this.props.blockNumber) return null 
-    this.props.ethersBlockchainGetBlockRequest({
-      payload: {
-        block: this.props.blockNumber,
-      },
-      metadata: {
-        delta: `BlockchainBlockGet|${this.props.blockNumber}`
-      }
-    })
+    if(!this.props.blockNumber) return <div>:(</div> 
+    this.props.ethersBlockchainGetBlockRequest(this.props.blockNumber)
   },
   componentDidUpdate(prevProps)
   {
@@ -41,13 +34,18 @@ const queryLifecycle = lifecycle(
 
 /*-* Redux *-*/
 const mapStateToProps = (state, props) => ({
-    data: props.blockNumber ? fromEthers.getDeltaData(state, `BlockchainBlockGet|${props.blockNumber}`) : fromEthers.getDeltaData(state, `BlockchainBlockGet|${props.delta}`),
-    blockNumber: props.blockNumber ? props.blockNumber : fromEthers.getDeltaData(state, 'BlockchainBlockNumber')
+    data: props.blockNumber ? fromEthers.getDeltaData(state, `blockchain|block|${props.blockNumber}`) : fromEthers.getDeltaData(state, `blockchain|block|${props.delta}`),
+    blockNumber: props.blockNumber ? props.blockNumber : fromEthers.getDeltaData(state, 'blockchain|block')
   }
 )
 
 const mapDispatchToProps = (dispatch, props) => ({
-  ethersBlockchainGetBlockRequest: (settings)=>dispatch(ethersBlockchainGetBlockRequest(settings)),
+  ethersBlockchainGetBlockRequest: (blockNumber)=>dispatch(ethers.blockchainBlock('REQUEST')(
+    blockNumber,
+    {
+      delta: `blockchain|block|${blockNumber}`
+    }
+  )),
 })
 
 export default compose(

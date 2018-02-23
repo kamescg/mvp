@@ -22,17 +22,17 @@ export default (props) =>
 <HorizontalRule bi='colorWheel' bs={1} w={1} />
 <TextField
   floatingLabelText="Width"
-  inputStyle={{ color: 'charcoal' }}
+  inputStyle={{ color: '#FFF' }}
   floatingLabelStyle={{ color: 'charcoal' }}
-  hintStyle={{ color: 'grey' }}
+  hintStyle={{ color: '#FFF' }}
   value={props.state.p}
   onChange={handleChange(props.onChange, 'w')}
 />
 <TextField
   floatingLabelText="Height"
-  inputStyle={{ color: 'charcoal' }}
+  inputStyle={{ color: '#FFF' }}
   floatingLabelStyle={{ color: 'charcoal' }}
-  hintStyle={{ color: 'grey' }}
+  hintStyle={{ color: '#FFF' }}
   value={props.state.p}
   onChange={handleChange(props.onChange, 'mh')}
 />

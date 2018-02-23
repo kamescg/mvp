@@ -12,11 +12,11 @@ import Heading from 'atoms/Heading'
 import Paragraph from 'atoms/Paragraph'
 import List from 'atoms/List'
 /* ---------------------------- Module Package ------------------------------ */
-export default props => !props.data ? null :
+export default props => 
 <Box>
   <Flex align='center' >
     <Box w={[1,1,0.7]} >
-      <Heading level={[3]} f={[4,5]} color='blue' >
+      <Heading level={[3]} f={[4,5]} >
         Ethereum Wallet Generator
       </Heading>
     </Box>
@@ -28,7 +28,7 @@ export default props => !props.data ? null :
   </Flex>
   <HorizontalRule bi='colorWheel' bs={1} w={[1]} />
   <Box>
-      <Heading level={[3]} f={[3]} color='blue' >
+      <Heading level={[3]} f={[3]}>
         <strong>Private Key:</strong> {idx(props, _=>_.data.privateKey)}
       </Heading>
     <Paragraph f={[1]}>

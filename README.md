@@ -1,13 +1,9 @@
-# DEX
-#### Decentralized Token Exchanges
+# MVP
+#### Mesh Viable Platform
 ##### Open Source The World
 
-Boilerplate Decentralized Token Exchanges
+The Mesh Viable Platform (or simply MVP) is a drag-and-drop editor focused on 10x the amount of people capable of building distributed applications.
 
-### Ganache Integration
+Built atop React, Redux and Sagas, the goal is easily composable decentralized solutions in a single distributed applications. For example a distributed application might be include uPort, Dether, and IPFS to help local businesses easily sell cryptocurrency to trusted people.
 
-Deploy SimpleStorage Contract
-```
-truffle compile
-truffle migrate --network ganache
-```
+For the most part the project has a stable drag-and-drop systems (thank you ORY Editor) and a simple integration path for easily including React components that wrap smart contract and other decentralized based solutions. 
